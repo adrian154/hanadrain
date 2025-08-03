@@ -1,59 +1,65 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>hanadrainsite</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
     <body>
-        <h1>hello world</h1>
-        <h2>this is the real actual real official hanadrain website prepare to explode </h2>
-        <table border="1" style="margin-top:20px; background:#ff0000">
-            <tr>
-                <th>oatmilk</th>
-                <th>description</th>
-                <th>score</th>
-            </tr>
-            <tr>
-                <td>oatly</td>
-                <td>fantastic</td>
-                <td>1231277892301239123123</td>
-            </tr>
-            <tr>
-                <td>chobani</td>
-                <td>ok</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>mooala</td>
-                <td>Red 40 is healthier and yummier</td>
-                <td>2</td>
-            </tr>
-        </table>
-        <p>want to see more? visit the <a>oatmilk tierlist</a> but it actually wont be there yet just wait pplease</p>
-        <p>while waiting, you can wait for the el camino passpost, a food handbook designed to let bay area non-locals figure out what to eat along the historical road, but that won't be there yet either.  not yet...</p>
-        <p>while waiting for that, visit the website's <a>about us</a>, still work in progress</p>
-        <p>baby's first git</p>
-            <div id="dragMe" style="width:150px;height:50px;background:#ff0000;position:absolute;top:300px;left:50px;cursor:move;display:flex;align-items:center;justify-content:center;">
-                <img src="poopoocat.jpg" height="200px" width="auto">
-            </div>
-            <script>
-                const dragItem = document.getElementById("dragMe");
-                let offsetX, offsetY, isDown = false;
+        <div>
+            <h1>hello world</h1>
+            <h2>this is the real actual real official hanadrain website prepare to explode </h2>
+            <table style="margin-top:20px; background:#ebbf56">
+                <tr>
+                    <th>oatmilk</th>
+                    <th>description</th>
+                    <th>score</th>
+                </tr>
+                <tr>
+                    <td>oatly</td>
+                    <td>fantastic</td>
+                    <td>1231277892301239123123</td>
+                </tr>
+                <tr>
+                    <td>chobani</td>
+                    <td>ok</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>mooala</td>
+                    <td>Red 40 is healthier and yummier</td>
+                    <td>2</td>
+                </tr>
+            </table>
+            <p>want to see more? visit the <a>oatmilk tierlist</a> but it actually wont be there yet just wait pplease</p>
+            <p>while waiting, you can wait for the el camino passpost, a food handbook designed to let bay area non-locals figure out what to eat along the historical road, but that won't be there yet either.  not yet...</p>
+            <p>while waiting for that, visit the website's <a>about us</a>, still work in progress</p>
+            <p>baby's first git</p>
+                <div id="dragMe" style="width:150px;height:50px;background:#90caf9;position:absolute;top:300px;left:50px;cursor:move;display:flex;align-items:center;justify-content:center;">
+                    <img src="poopoocat.jpg" height="200px" width="auto" draggable="false">
+                </div>
+                <script>
+                    const dragItem = document.getElementById("dragMe");
+                    let offsetX, offsetY, isDown = false;
 
-                dragItem.addEventListener('mousedown', function(e) {
-                    isDown = true;
-                    offsetX = e.clientX - dragItem.offsetLeft;
-                    offsetY = e.clientY - dragItem.offsetTop;
-                    document.body.style.userSelect = "none";
-                });
+                    dragItem.addEventListener('mousedown', function(e) {
+                        isDown = true;
+                        offsetX = e.clientX - dragItem.offsetLeft;
+                        offsetY = e.clientY - dragItem.offsetTop;
+                        document.body.style.userSelect = "none";
+                    });
 
-                document.addEventListener('mouseup', function() {
-                    isDown = false;
-                    document.body.style.userSelect = "";
-                });
+                    document.addEventListener('mouseup', function() {
+                        isDown = false;
+                        document.body.style.userSelect = "";
+                    });
 
-                document.addEventListener('mousemove', function(e) {
-                    if (!isDown) return;
-                    dragItem.style.left = (e.clientX - offsetX) + 'px';
-                    dragItem.style.top = (e.clientY - offsetY) + 'px';
-                });
-            </script>
+                    document.addEventListener('mousemove', function(e) {
+                        if (!isDown) return;
+                        dragItem.style.left = (e.clientX - offsetX) + 'px';
+                        dragItem.style.top = (e.clientY - offsetY) + 'px';
+                    });
+                </script>
+        </div>
     </body>
 </html>
 
