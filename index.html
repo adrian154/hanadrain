@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div style="margin: 0 auto; max-width: 950px; padding: 20px; float: center;">
+        <div id="main" style="margin: 0 auto; max-width: 950px; padding: 20px; float: center;">
             <h1>hello world</h1>
             <h2>this is the real actual real official hanadrain website prepare to explode </h2>
             <table style="margin-top:20px; background:#ebbf56">
@@ -34,32 +34,11 @@
             <p>while waiting, you can wait for the el camino passpost, a food handbook designed to let bay area non-locals figure out what to eat along the historical road, but that won't be there yet either.  not yet...</p>
             <p>while waiting for that, visit the website's <a>about us</a>, still work in progress</p>
             <p>baby's first git</p>
-                <div id="dragMe" style="width:150px;height:50px;background:#90caf9;position:absolute;top:300px;left:50px;cursor:move;display:flex;align-items:center;justify-content:center;">
-                    <img src="poopoocat.jpg" height="200px" width="auto" draggable="false">
-                </div>
-                <script>
-                    const dragItem = document.getElementById("dragMe");
-                    let offsetX, offsetY, isDown = false;
-
-                    dragItem.addEventListener('mousedown', function(e) {
-                        isDown = true;
-                        offsetX = e.clientX - dragItem.offsetLeft;
-                        offsetY = e.clientY - dragItem.offsetTop;
-                        document.body.style.userSelect = "none";
-                    });
-
-                    document.addEventListener('mouseup', function() {
-                        isDown = false;
-                        document.body.style.userSelect = "";
-                    });
-
-                    document.addEventListener('mousemove', function(e) {
-                        if (!isDown) return;
-                        dragItem.style.left = (e.clientX - offsetX) + 'px';
-                        dragItem.style.top = (e.clientY - offsetY) + 'px';
-                    });
-                </script>
+            <div id="cat">
+                <img src="poopoocat.jpg" height="200px" width="auto" draggable="false">
+            </div>
         </div>
+        <script src="homepage.js"></script>
     </body>
 </html>
 
