@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>hanadraineats</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h2>eat with hanadrain in the bay</h2>
+        <label for="tagFilter">filter by tag:</label>
+        <select id="tagFilter" onchange="filterCatalog()">
+            <option value="">all</option>
+            <option value="halal">halal</option>
+            <option value="xinjiang">xinjiang</option>
+            <option value="spicy">spicy</option>
+            <option value="chinese">chinese</option>
+            <option value="noodles">noodles</option>            
+        </select>
+        <div id="catalog">
+            <div class="Place">
+                <img src="tarim.jpg" alt="Tarim Garden" width="100">
+                <h3>Tarim Garden</h3>
+                <p>Irresistable</p>
+                    <div class="tags">
+                        <span class="tag">halal</span>
+                        <span class="tag">xinjiang</span>
+                        <span class="tag">spicy</span>
+                    </div>
+                <button onclick="viewPlace('Tarim Garden', 'Irresistable', 'tarim.jpg', ['halal','xinjiang','spicy'])">check it out</button>
+            </div>
+            <div class="Place">
+                <img src="noodletalk.jpg" alt="Noodle Talk" width="100">
+                <h3>Noodle Talk</h3>
+                <p>#NitritePoisoning</p>
+                <div class="tags">
+                    <span class="tag">chinese</span>
+                    <span class="tag">noodles</span>
+                    <span class="tag">spicy</span>
+                </div>
+                <button onclick="viewPlace('Noodle Talk', '#NitritePoisoning', 'noodletalk.jpg', ['chinese','noodles','spicy'])">check it out</button>
+            </div>
+        </div>
+        <script src="homepage.js"></script>
+        <div id="sidebar" class="sidebar">
+            <button onclick="closeSidebar()" style="float:right;">&times;</button>
+            <div id="sidebar-content">
+                <!-- Details will go here -->
+            </div>
+    </body>
+</html>
