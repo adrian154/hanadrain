@@ -18,3 +18,81 @@ body {
     visibility: hidden;
     pointer-events: none;    
 }
+#catalog {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+.foodplace {
+    background: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 150px;
+}
+.item img {
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+button {
+    background: #8fc1de;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background: #5fa6c7;
+}
+.tags {
+    margin-top: 8px;
+}
+.tag {
+    display: inline-block;
+    background: #ffe082;
+    color: #333;
+    border-radius: 12px;
+    padding: 2px 10px;
+    margin-right: 5px;
+    font-size: 0.85em;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100%;
+    background: #fffbe7;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+    transition: right 0.3s;
+    z-index: 1000;
+    padding: 24px 16px;
+    overflow-y: auto;
+}
+.sidebar.open {
+    right: 0;
+}
+
+#back-btn {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    font-size: 2rem;
+    color: #333;
+    text-decoration: none;
+    background: #ffe082;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s;
+}
+#back-btn:hover {
+    background: #ffd54f;
+}
