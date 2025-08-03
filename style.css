@@ -12,5 +12,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    display: none;
+}
+
+#cat.hidden {
+    visibility: hidden;
+    pointer-events: none;    
 }

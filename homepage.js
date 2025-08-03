@@ -1,13 +1,20 @@
 const draggableCat = document.getElementById("cat");
 let offsetX, offsetY, isDown = false;
 
-draggableCat.querySelector("img").addEventListener("load", () => {
+const randomizeCat = () => {
     const mainArea = document.getElementById("main").getBoundingClientRect();
     const draggableCatRect = draggableCat.getBoundingClientRect();
     draggableCat.style.left = (mainArea.left + Math.random()*(mainArea.width-draggableCatRect.width)) + 'px';
-    draggableCat.style.top = (mainArea.top + Math.random()*(mainArea.height-draggableCatRect.height)) + 'px';
-    draggableCat.style.display = "";
-});
+    draggableCat.style.top = (mainArea.top + Math.random()*(mainArea.height+draggableCatRect.height)) + 'px';
+    draggableCat.classList.remove("hidden");
+};
+
+const draggableCatImg = draggableCat.querySelector("img");
+if(draggableCatImg.complete) {
+    randomizeCat();
+} else {
+    draggableCatImg.addEventListener("load", randomizeCat);
+}
 
 draggableCat.addEventListener('mousedown', function(e) {
     isDown = true;
