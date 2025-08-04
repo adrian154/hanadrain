@@ -1,23 +1,4 @@
-body {
-    background-color: #8fc1de;
-    font-family: 'Courier New', Courier, monospace;
-}
 
-#cat {
-    width: 150px;
-    height: 50px;
-    background: #90caf9;
-    position: absolute;
-    cursor: move;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#cat.hidden {
-    visibility: hidden;
-    pointer-events: none;    
-}
 #catalog {
     display: flex;
     gap: 30px;

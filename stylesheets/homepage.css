@@ -1,0 +1,12 @@
+/* draggable-cat starts as hidden */
+#draggable-cat {
+    position: fixed;
+    cursor: move;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#draggable-cat.shown {
+    visibility: initial;
+    pointer-events: initial;    
+}

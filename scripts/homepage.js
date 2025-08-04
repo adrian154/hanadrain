@@ -1,12 +1,12 @@
-const draggableCat = document.getElementById("cat");
+const draggableCat = document.getElementById("draggable-cat");
 let offsetX, offsetY, isDown = false;
 
 const randomizeCat = () => {
-    const mainArea = document.getElementById("main").getBoundingClientRect();
+    const mainArea = document.querySelector("main").getBoundingClientRect();
     const draggableCatRect = draggableCat.getBoundingClientRect();
     draggableCat.style.left = (mainArea.left + Math.random()*(mainArea.width-draggableCatRect.width)) + 'px';
-    draggableCat.style.top = (mainArea.top + Math.random()*(mainArea.height+draggableCatRect.height)) + 'px';
-    draggableCat.classList.remove("hidden");
+    draggableCat.style.top = (mainArea.top + Math.random()*(mainArea.height-draggableCatRect.height)) + 'px';
+    draggableCat.classList.add("shown");
 };
 
 const draggableCatImg = draggableCat.querySelector("img");

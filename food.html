@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>hanadraineats</title>
-        <link rel="stylesheet" href="style.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>hanadrain eats</title>
+        <link rel="stylesheet" href="stylesheets/common.css">
+        <link rel="stylesheet" href="stylesheets/food.css">
     </head>
     <body>
-        <div style="margin: 0 auto; max-width: 950px; padding: 20px; float: center;">
-        <a href="index.html" id="back-btn" title="Back to Home">
-        &times;
-        </a>
-        <h2>eat with hanadrain in the bay</h2>
-        <label for="tagFilter">filter by tag:</label>
-        <div id="filters"></div>
-        <div id="catalog">
-            <div class="Place">
-                <img src="tarim.jpg" alt="Tarim Garden" width="100">
-                <h3>Tarim Garden</h3>
-                <p>Irresistable</p>
-                    <div class="tags">
-                        <span class="tag">halal</span>
-                        <span class="tag">xinjiang</span>
-                        <span class="tag">spicy</span>
-                        <span class="tag">el camino passport</span>
-                    </div>
-                <button onclick="viewPlace('Tarim Garden', 'Irresistable', 'tarim.jpg', ['halal','xinjiang','spicy'])">check it out</button>
-            </div>
-            <div class="Place">
-                <img src="noodletalk.jpg" alt="Noodle Talk" width="100">
-                <h3>Noodle Talk</h3>
-                <p>#NitritePoisoning</p>
-                <div class="tags">
-                    <span class="tag">chinese</span>
-                    <span class="tag">el camino passport</span>
-                    <span class="tag">spicy</span>
+        <main>
+            <a href="index.html" id="back-btn" title="Back to Home">
+            &times;
+            </a>
+            <h2>eat with hanadrain in the bay</h2>
+            <label for="tagFilter">filter by tag:</label>
+            <div id="filters"></div>
+            <div id="catalog">
+                <div class="Place">
+                    <img src="tarim.jpg" alt="Tarim Garden" width="100">
+                    <h3>Tarim Garden</h3>
+                    <p>Irresistable</p>
+                        <div class="tags">
+                            <span class="tag">halal</span>
+                            <span class="tag">xinjiang</span>
+                            <span class="tag">spicy</span>
+                            <span class="tag">el camino passport</span>
+                        </div>
+                    <button onclick="viewPlace('Tarim Garden', 'Irresistable', 'tarim.jpg', ['halal','xinjiang','spicy'])">check it out</button>
                 </div>
-                <button onclick="viewPlace('Noodle Talk', '#NitritePoisoning', 'noodletalk.jpg', ['chinese','noodles','spicy'])">check it out</button>
+                <div class="Place">
+                    <img src="noodletalk.jpg" alt="Noodle Talk" width="100">
+                    <h3>Noodle Talk</h3>
+                    <p>#NitritePoisoning</p>
+                    <div class="tags">
+                        <span class="tag">chinese</span>
+                        <span class="tag">el camino passport</span>
+                        <span class="tag">spicy</span>
+                    </div>
+                    <button onclick="viewPlace('Noodle Talk', '#NitritePoisoning', 'noodletalk.jpg', ['chinese','noodles','spicy'])">check it out</button>
+                </div>
             </div>
-        </div>
-        <div id="sidebar" class="sidebar">
-            <button onclick="closeSidebar()" style="float:right;">&times;</button>
-            <div id="sidebar-content">
-                <!-- Details will go here -->
-            </div>
-        </div>
-        <script src="food.js"></script>
+            <div id="sidebar" class="sidebar">
+                <button onclick="closeSidebar()" style="float:right;">&times;</button>
+                <div id="sidebar-content">
+                    <!-- Details will go here -->
+                </div>
+        </main>
+        <script src="scripts/food.js"></script>
     </body>
 </html>

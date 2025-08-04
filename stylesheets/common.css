@@ -1,0 +1,10 @@
+body {
+    background-color: #8fc1de;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+main {
+    max-width: 50em;
+    padding: 1em;
+    margin: auto;
+}
