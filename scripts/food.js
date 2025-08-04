@@ -1,13 +1,85 @@
-const places = {};
+const places = [];
+const tagsSet = new Set();
+const enabledTagsSet = new Set();
+
+const book = document.getElementById("book"),
+      bookPageTemplate = document.getElementById("book-page-template"),
+      filters = document.getElementById("filters");
 
 document.getElementById("places").querySelectorAll(".place").forEach(placeDiv => {
-    const name = placeDiv.dataset.name;
-    const location = placeDiv.dataset.location;
-    const stars = placeDiv.dataset.stars;
-    const drainText = placeDiv.querySelector(".drain-text");
-    const hanaText = placeDiv.querySelector(".hana-text");
+    
+    // create book page element and add to page
+    const bookPage = bookPageTemplate.cloneNode(true);
+    bookPage.id = null;
+    bookPage.style.display = "";
+    book.append(bookPage);
+
+    bookPage.querySelector(".place-name").textContent = placeDiv.dataset.name;
+    bookPage.querySelector(".place-location").textContent = placeDiv.dataset.location;
+    bookPage.querySelector(".place-stars").textContent = placeDiv.dataset.stars;
+    bookPage.querySelector(".drain-text").append(placeDiv.querySelector(".drain-text"));
+    bookPage.querySelector(".hana-text").append(placeDiv.querySelector(".hana-text"));
+    
+    // collect tags
     const tags = Array.from(placeDiv.querySelector(".tags").children).map(elt => elt.textContent);
-    console.log(name, tags); 
+    for(const tag of tags)
+        tagsSet.add(tag);
+
+    places.push({tags: tags, element: bookPage});
+
+});
+
+// set up tags
+const tagFilterButtons = {};
+for(const tag of Array.from(tagsSet).sort((a, b) => a.localeCompare(b))) {
+    
+    const filter = document.createElement("span");
+    filter.classList.add("filter", "active");
+    filter.textContent = tag;
+    filters.append(filter);
+    enabledTagsSet.add(tag);
+    tagFilterButtons[tag] = filter;
+
+    filter.addEventListener("click", () => {
+        if(filter.classList.toggle("active"))
+            enabledTagsSet.add(tag);
+        else
+            enabledTagsSet.delete(tag);
+        updateFilters();   
+    });
+
+}
+
+const updateFilters = () => {
+    
+    for(const place of places) {
+        let shown = false;
+        for(const tag of place.tags) {
+            if(enabledTagsSet.has(tag)) {
+                shown = true;
+            }
+        }
+        if(shown)
+            place.element.style.display = "";
+        else
+            place.element.style.display = "none";
+    }
+};
+
+document.getElementById("select-all").addEventListener("click", () => {
+    for(const tag of tagsSet) {
+        enabledTagsSet.add(tag);
+        tagFilterButtons[tag].classList.add("active");
+    }
+    updateFilters();
+});
+
+document.getElementById("deselect-all").addEventListener("click", () => {
+    for(const tag of tagsSet) {
+        enabledTagsSet.delete(tag);
+        tagFilterButtons[tag].classList.remove("active");
+    }
+    updateFilters();
 });
 
 /*const filters = document.getElementById("filters");
