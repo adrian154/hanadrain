@@ -15,16 +15,24 @@
             <h1>hanadraineats</h1>
         </div>
         <div id="book">
-
+            <div class="book-page" id="book-page-template" style="display: none">
+                <h1 class="place-name"></h1>
+                <p>Location: <span class="place-location">location</span> / stars: <span class="place-stars"></span></p>
+                <div class="drain-text" style="color: #ff0000"></div>
+                <div class="hana-text" style="color: #0000ff"></div>
+            </div>
         </div>
-        <div id="filters">
-
+        <div id="filters" style="border: 1px solid green">
+            <span>filters!</span>
+            <button id="select-all">select all</button>
+            <button id="deselect-all">deselect all</button>
         </div>
 
         <!-- place data is stored here, these non-displayed elements are turned into page content at runtime -->
         <div id="places" style="display: none">
 
-
+            <!-- copy this template to add a new place! -->
+            <!--
             <div class="place"
                 data-name="Example Place"
                 data-location="123 doodoo road"
@@ -38,39 +46,38 @@
                     <p>tag3</p>
                 </div>
             </div>
+            -->
 
-        </div>
+            <div class="place"
+                data-name="Tarim Garden"
+                data-location="TODO"
+                data-stars="5">
 
-            <!--<div id="catalog">
-                <div class="Place">
-                    <img src="tarim.jpg" alt="Tarim Garden" width="100">
-                    <h3>Tarim Garden</h3>
-                    <p>Irresistable</p>
-                        <div class="tags">
-                            <span class="tag">halal</span>
-                            <span class="tag">xinjiang</span>
-                            <span class="tag">spicy</span>
-                            <span class="tag">el camino passport</span>
-                        </div>
-                    <button onclick="viewPlace('Tarim Garden', 'Irresistable', 'tarim.jpg', ['halal','xinjiang','spicy'])">check it out</button>
-                </div>
-                <div class="Place">
-                    <img src="noodletalk.jpg" alt="Noodle Talk" width="100">
-                    <h3>Noodle Talk</h3>
-                    <p>#NitritePoisoning</p>
-                    <div class="tags">
-                        <span class="tag">chinese</span>
-                        <span class="tag">el camino passport</span>
-                        <span class="tag">spicy</span>
-                    </div>
-                    <button onclick="viewPlace('Noodle Talk', '#NitritePoisoning', 'noodletalk.jpg', ['chinese','noodles','spicy'])">check it out</button>
+                <p class="drain-text">Drain had this to say about this place. Blah blah blah!</p>
+                <p class="hana-text">Hana had this to say about this place. Blah blah blah!</p>
+                <div class="tags">
+                    <p>halal</p>
+                    <p>xinjiang</p>
+                    <p>spicy</p>
+                    <p>el camino passport</p>
                 </div>
             </div>
-            <div id="sidebar" class="sidebar">
-                <button onclick="closeSidebar()" style="float:right;">&times;</button>
-                <div id="sidebar-content">
+
+            <div class="place"
+                data-name="Noodle Talk"
+                data-location="123 doodoo road"
+                data-stars="4">
+
+                <p class="drain-text">Drain had this to say about this place. Blah blah blah!</p>
+                <p class="hana-text">Hana had this to say about this place. Blah blah blah!</p>
+                <div class="tags">
+                    <p>chinese</p>
+                    <p>el camino passport</p>
+                    <p>spicy</p>
                 </div>
-            -->
+            </div>
+
+        </div>
         <script src="scripts/food.js"></script>
     </body>
 </html>

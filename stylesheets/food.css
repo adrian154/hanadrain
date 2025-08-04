@@ -3,11 +3,25 @@ body {
     max-width: 40em;
     margin: auto;
     padding: 1em;
-    
+
     display: flex;
     flex-direction: column;
 
 }
+
+.tag,
+.filter {
+    border-radius: 1em;
+    padding: 4px 6px;
+    font-size: 0.8em;
+}
+
+.filter {
+    background-color: #bfbfbf;
+    cursor: pointer;
+    display: inline-block;
+}
+.filter.active { background-color: #00ff00; }
 
 /*
 #catalog {
