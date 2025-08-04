@@ -1,4 +1,15 @@
+body {
 
+    max-width: 40em;
+    margin: auto;
+    padding: 1em;
+    
+    display: flex;
+    flex-direction: column;
+
+}
+
+/*
 #catalog {
     display: flex;
     gap: 30px;
@@ -77,3 +88,4 @@ button:hover {
 #back-btn:hover {
     background: #ffd54f;
 }
+    */

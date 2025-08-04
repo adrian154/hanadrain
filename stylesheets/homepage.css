@@ -1,3 +1,9 @@
+body {
+    max-width: 50em;
+    padding: 1em;
+    margin: auto;
+}
+
 /* draggable-cat starts as hidden */
 #draggable-cat {
     position: fixed;

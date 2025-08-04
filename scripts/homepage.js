@@ -2,7 +2,7 @@ const draggableCat = document.getElementById("draggable-cat");
 let offsetX, offsetY, isDown = false;
 
 const randomizeCat = () => {
-    const mainArea = document.querySelector("main").getBoundingClientRect();
+    const mainArea = document.body.getBoundingClientRect();
     const draggableCatRect = draggableCat.getBoundingClientRect();
     draggableCat.style.left = (mainArea.left + Math.random()*(mainArea.width-draggableCatRect.width)) + 'px';
     draggableCat.style.top = (mainArea.top + Math.random()*(mainArea.height-draggableCatRect.height)) + 'px';

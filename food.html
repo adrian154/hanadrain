@@ -8,14 +8,40 @@
         <link rel="stylesheet" href="stylesheets/food.css">
     </head>
     <body>
-        <main>
-            <a href="index.html" id="back-btn" title="Back to Home">
-            &times;
-            </a>
-            <h2>eat with hanadrain in the bay</h2>
-            <label for="tagFilter">filter by tag:</label>
-            <div id="filters"></div>
-            <div id="catalog">
+        <div id="randomizer-cat">
+            <p>randomizer cat will go here</p>
+        </div>
+        <div id="banner">
+            <h1>hanadraineats</h1>
+        </div>
+        <div id="book">
+
+        </div>
+        <div id="filters">
+
+        </div>
+
+        <!-- place data is stored here, these non-displayed elements are turned into page content at runtime -->
+        <div id="places" style="display: none">
+
+
+            <div class="place"
+                data-name="Example Place"
+                data-location="123 doodoo road"
+                data-stars="4">
+
+                <p class="drain-text">Drain had this to say about this place. Blah blah blah!</p>
+                <p class="hana-text">Hana had this to say about this place. Blah blah blah!</p>
+                <div class="tags">
+                    <p>tag1</p>
+                    <p>tag2</p>
+                    <p>tag3</p>
+                </div>
+            </div>
+
+        </div>
+
+            <!--<div id="catalog">
                 <div class="Place">
                     <img src="tarim.jpg" alt="Tarim Garden" width="100">
                     <h3>Tarim Garden</h3>
@@ -43,9 +69,8 @@
             <div id="sidebar" class="sidebar">
                 <button onclick="closeSidebar()" style="float:right;">&times;</button>
                 <div id="sidebar-content">
-                    <!-- Details will go here -->
                 </div>
-        </main>
+            -->
         <script src="scripts/food.js"></script>
     </body>
 </html>

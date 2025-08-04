@@ -1,4 +1,16 @@
-const filters = document.getElementById("filters");
+const places = {};
+
+document.getElementById("places").querySelectorAll(".place").forEach(placeDiv => {
+    const name = placeDiv.dataset.name;
+    const location = placeDiv.dataset.location;
+    const stars = placeDiv.dataset.stars;
+    const drainText = placeDiv.querySelector(".drain-text");
+    const hanaText = placeDiv.querySelector(".hana-text");
+    const tags = Array.from(placeDiv.querySelector(".tags").children).map(elt => elt.textContent);
+    console.log(name, tags); 
+});
+
+/*const filters = document.getElementById("filters");
 
 // iterate through places, get a list of all tags
 const allTagsSet = new Set();
@@ -49,3 +61,4 @@ for(const tag of allTags) {
     filters.append(checkbox, label);
 
 }
+*/
