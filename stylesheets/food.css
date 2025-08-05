@@ -17,11 +17,11 @@ body {
 }
 
 .filter {
-    background-color: #bfbfbf;
+    background-color: #C48B96;
     cursor: pointer;
     display: inline-block;
 }
-.filter.active { background-color: #00ff00; }
+.filter.active { background-color: #F5A9B8 ; }
 
 /*
 #catalog {

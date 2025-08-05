@@ -1,4 +1,18 @@
 body {
-    background-color: #8fc1de;
+    background-color: #EEEEEE;
     font-family: 'Courier New', Courier, monospace;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+    background: #5BCEFA;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #F5A9B8;
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #C48B96;
 }
