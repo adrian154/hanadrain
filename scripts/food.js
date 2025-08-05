@@ -6,6 +6,8 @@ const book = document.getElementById("book"),
       bookPageTemplate = document.getElementById("book-page-template"),
       filters = document.getElementById("filters");
 
+const STARS_IMGS = ["resources/food/stars0.png", "resources/food/stars1.png", "resources/food/stars2.png", "resources/food/stars3.png", "resources/food/stars4.png", "resources/food/stars5.png", "resources/food/starsMega.png"];
+
 document.getElementById("places").querySelectorAll(".place").forEach(placeDiv => {
     
     // create book page element and add to page
@@ -16,7 +18,7 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
 
     bookPage.querySelector(".place-name").textContent = placeDiv.dataset.name;
     bookPage.querySelector(".place-location").textContent = placeDiv.dataset.location;
-    bookPage.querySelector(".place-stars").textContent = placeDiv.dataset.stars;
+    bookPage.querySelector(".place-stars").src = STARS_IMGS[Number(placeDiv.dataset.stars)];
     bookPage.querySelector(".hana-sez").append(...placeDiv.querySelector(".hana-text").childNodes);
     bookPage.querySelector(".drain-sez").append(...placeDiv.querySelector(".drain-text").childNodes);
     

@@ -25,7 +25,7 @@ body {
 
 #book {
     position: relative;
-    background-image: url("../resources/foodStill.png");
+    background-image: url("../resources/food/foodStill.png");
     aspect-ratio: 3/2;
     width: 100%;
     background-size: 100%;
@@ -34,18 +34,18 @@ body {
 
 .book-page .left {
     position: absolute;
-    top: 6.8em;
-    left: 6.2em;
-    width: 25em;
-    height: 29em;
+    top: 15%;
+    left: 9%;
+    width: 37%;
+    height: 64%;
 }
 
 .book-page .right {
     position: absolute;
-    top: 6.8em;
-    left: 36em;
-    width: 25em;
-    height: 29em;
+    top: 15%;
+    left: 52.5%;
+    width: 37%;
+    height: 64%;
 }
 
 .book-page h1 {
@@ -68,7 +68,7 @@ body {
 .drain-sez { background-color: var(--pink); }
 
 .hana-sez, .drain-sez {
-    padding: 0.5em 0.8em;
+    padding: 1em;
     margin: 1em 0;
 }
 

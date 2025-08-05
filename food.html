@@ -12,7 +12,7 @@
             <p>randomizer cat will go here</p>
         </div>
         <div id="banner">
-            <img src="resources/hanadrainStill.png" style="height: 12em; width: auto;">
+            <img src="resources/food/hanadrainStill.png" style="height: 12em; width: auto;" onmouseover="this.src = 'resources/food/hanadrainHover.gif'" onmouseleave="this.src = 'resources/food/hanadrainStill.png'">
         </div>
         <div id="book">
             <div class="book-page" id="book-page-template" style="display: none">
@@ -20,25 +20,19 @@
                     <h1 class="place-name">Place Name</h1>
                     <span class="place-location">location</span>
                     <img src="images/poopoocat.jpg">
-                    <span class="place-stars"></span>
+                    <img class="place-stars">
                 </div>
                 <div class="right">
                     <div class="hana-sez">
-                        <img src="resources/hanaIdle.gif">
+                        <img src="resources/food/hanaIdle.gif" onmouseover="this.src='resources/food/hanaHover.gif'" onmouseleave="this.src='resources/food/hanaIdle.gif'">
                         <i>hana sez:</i>
                     </div>
                     <div class="drain-sez">
-                        <img src="resources/drainIdle.gif">
+                        <img src="resources/food/drainIdle.gif" onmouseover="this.src='resources/food/drainHover.gif'" onmouseleave="this.src='resources/food/drainIdle.gif'"">
                         <i>drain sez:</i>
                     </div>
                 </div>    
             </div>
-            <!--<div class="book-page" id="book-page-template" style="display: none">
-                <h1 class="place-name"></h1>
-                <p>Location: <span class="place-location">location</span> / stars: <span class="place-stars"></span></p>
-                <div class="drain-text" style="color: #ff0000"></div>
-                <div class="hana-text" style="color: #0000ff"></div>
-            </div>-->
         </div>
         <div id="filters" style="border: 1px solid green">
             <span>filters!</span>
