@@ -12,6 +12,11 @@
             <p style="text-align: center;"><b style="text-decoration: underline;">table of contents</b></p>
             <ul id="contents-list">
             </ul>
+            <div id="filters" style="border: 1px solid green">
+                <span>filters!</span>
+                <button id="select-all">select all</button>
+                <button id="deselect-all">deselect all</button>
+            </div>
         </nav>
         <main>
             <div id="banner" style="margin-left: 1.5em">
@@ -37,15 +42,9 @@
                     </div>    
                 </div>
             </div>
-            <div id="filters" style="border: 1px solid green">
-                <span>filters!</span>
-                <button id="select-all">select all</button>
-                <button id="deselect-all">deselect all</button>
-            </div>
 
             <!-- place data is stored here, these non-displayed elements are turned into page content at runtime -->
             <div id="places" style="display: none">
-
                 <!-- copy this template to add a new place! -->
                 <!--
                 <div class="place"
@@ -63,7 +62,6 @@
                     </div>
                 </div>
                 -->
-
                 <div class="place"
                     data-name="Tarim Garden"
                     data-location="TODO"
