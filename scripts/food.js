@@ -34,7 +34,7 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
     bookPage.querySelector(".drain-sez").append(...placeDiv.querySelector(".drain-text").childNodes);
     
     // also add to TOC
-    const tocEntry = document.createElement("li");
+    const tocEntry = document.createElement("span");
     tocEntry.textContent = placeDiv.dataset.name;
     tocEntry.addEventListener("click", () => {
 
@@ -60,7 +60,7 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
 
 // insert toc in order
 places.sort((a,b) => a.name.localeCompare(b.name)).forEach(place => {
-    toc.append(place.tocEntry);
+    toc.append(place.tocEntry, " \u2219 ");
 });
 
 // set up tags

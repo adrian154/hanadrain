@@ -13,7 +13,7 @@ main {
 }
 
 nav {
-    flex: 10em;
+    flex: 20em;
     flex-grow: 0;
     padding-top: 3em;
 }
@@ -22,7 +22,7 @@ nav {
     padding-left: 0.5em;
 }
 
-#contents-list li {
+#contents-list span {
     text-decoration: underline;
     cursor: pointer;
 }
