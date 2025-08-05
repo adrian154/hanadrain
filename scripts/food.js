@@ -4,16 +4,27 @@ const enabledTagsSet = new Set();
 
 const book = document.getElementById("book"),
       bookPageTemplate = document.getElementById("book-page-template"),
-      filters = document.getElementById("filters");
+      filters = document.getElementById("filters"),
+      toc = document.getElementById("contents-list");
 
-const STARS_IMGS = ["resources/food/stars0.png", "resources/food/stars1.png", "resources/food/stars2.png", "resources/food/stars3.png", "resources/food/stars4.png", "resources/food/stars5.png", "resources/food/starsMega.png"];
+const STARS_IMGS = [
+    "resources/food/stars0.png",
+    "resources/food/stars1.png",
+    "resources/food/stars2.png",
+    "resources/food/stars3.png",
+    "resources/food/stars4.png",
+    "resources/food/stars5.png",
+    "resources/food/starsMega.png"
+];
+
+let currentlyShown = null;
 
 document.getElementById("places").querySelectorAll(".place").forEach(placeDiv => {
     
     // create book page element and add to page
     const bookPage = bookPageTemplate.cloneNode(true);
     bookPage.id = null;
-    bookPage.style.display = "";
+    bookPage.style.display = "none";
     book.append(bookPage);
 
     bookPage.querySelector(".place-name").textContent = placeDiv.dataset.name;
@@ -22,13 +33,34 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
     bookPage.querySelector(".hana-sez").append(...placeDiv.querySelector(".hana-text").childNodes);
     bookPage.querySelector(".drain-sez").append(...placeDiv.querySelector(".drain-text").childNodes);
     
+    // also add to TOC
+    const tocEntry = document.createElement("li");
+    tocEntry.textContent = placeDiv.dataset.name;
+    tocEntry.addEventListener("click", () => {
+
+        if(currentlyShown)
+            currentlyShown.style.display = "none";
+        book.classList.add("flipping");
+        currentlyShown = bookPage;
+        setTimeout(() => {
+            bookPage.style.display = "";
+            book.classList.remove("flipping");
+        }, 600);
+    
+    });
+
     // collect tags
     const tags = Array.from(placeDiv.querySelector(".tags").children).map(elt => elt.textContent);
     for(const tag of tags)
         tagsSet.add(tag);
 
-    places.push({tags: tags, element: bookPage});
+    places.push({name: placeDiv.dataset.name, tags: tags, page: bookPage, tocEntry: tocEntry});
 
+});
+
+// insert toc in order
+places.sort((a,b) => a.name.localeCompare(b.name)).forEach(place => {
+    toc.append(place.tocEntry);
 });
 
 // set up tags

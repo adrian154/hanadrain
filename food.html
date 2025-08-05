@@ -8,91 +8,91 @@
         <link rel="stylesheet" href="stylesheets/food.css">
     </head>
     <body>
-        <div id="randomizer-cat">
-            <p>randomizer cat will go here</p>
-        </div>
-        <div id="banner">
-            <img src="resources/food/hanadrainStill.png" style="height: 12em; width: auto;" onmouseover="this.src = 'resources/food/hanadrainHover.gif'" onmouseleave="this.src = 'resources/food/hanadrainStill.png'">
-        </div>
-        <div id="book">
-            <div class="book-page" id="book-page-template" style="display: none">
-                <div class="left">
-                    <h1 class="place-name">Place Name</h1>
-                    <span class="place-location">location</span>
-                    <img src="images/poopoocat.jpg">
-                    <img class="place-stars">
-                </div>
-                <div class="right">
-                    <div class="hana-sez">
-                        <img src="resources/food/hanaIdle.gif" onmouseover="this.src='resources/food/hanaHover.gif'" onmouseleave="this.src='resources/food/hanaIdle.gif'">
-                        <i>hana sez:</i>
+        <nav>
+            <p style="text-align: center;"><b style="text-decoration: underline;">table of contents</b></p>
+            <ul id="contents-list">
+            </ul>
+        </nav>
+        <main>
+            <div id="banner" style="margin-left: 1.5em">
+                <img src="resources/food/hanadrainStill.png" style="height: 12em; width: auto;" onmouseover="this.src = 'resources/food/hanadrainHover.gif'" onmouseleave="this.src = 'resources/food/hanadrainStill.png'">
+            </div>
+            <div id="book">
+                <div class="book-page" id="book-page-template" style="display: none">
+                    <div class="left">
+                        <h1 class="place-name">Place Name</h1>
+                        <span class="place-location">location</span>
+                        <img src="images/poopoocat.jpg">
+                        <img class="place-stars">
                     </div>
-                    <div class="drain-sez">
-                        <img src="resources/food/drainIdle.gif" onmouseover="this.src='resources/food/drainHover.gif'" onmouseleave="this.src='resources/food/drainIdle.gif'"">
-                        <i>drain sez:</i>
+                    <div class="right">
+                        <div class="hana-sez">
+                            <img src="resources/food/hanaIdle.gif" onmouseover="this.src='resources/food/hanaHover.gif'" onmouseleave="this.src='resources/food/hanaIdle.gif'">
+                            <i>hana sez:</i>
+                        </div>
+                        <div class="drain-sez">
+                            <img src="resources/food/drainIdle.gif" onmouseover="this.src='resources/food/drainHover.gif'" onmouseleave="this.src='resources/food/drainIdle.gif'"">
+                            <i>drain sez:</i>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <div id="filters" style="border: 1px solid green">
+                <span>filters!</span>
+                <button id="select-all">select all</button>
+                <button id="deselect-all">deselect all</button>
+            </div>
+
+            <!-- place data is stored here, these non-displayed elements are turned into page content at runtime -->
+            <div id="places" style="display: none">
+
+                <!-- copy this template to add a new place! -->
+                <!--
+                <div class="place"
+                    data-name="Example Place"
+                    data-url="https://website.com/"
+                    data-location="123 doodoo road"
+                    data-stars="4">
+
+                    <p class="drain-text">Drain had this to say about this place. Blah blah blah!</p>
+                    <p class="hana-text">Hana had this to say about this place. Blah blah blah!</p>
+                    <div class="tags">
+                        <p>tag1</p>
+                        <p>tag2</p>
+                        <p>tag3</p>
                     </div>
-                </div>    
-            </div>
-        </div>
-        <div id="filters" style="border: 1px solid green">
-            <span>filters!</span>
-            <button id="select-all">select all</button>
-            <button id="deselect-all">deselect all</button>
-        </div>
+                </div>
+                -->
 
-        <!-- place data is stored here, these non-displayed elements are turned into page content at runtime -->
-        <div id="places" style="display: none">
+                <div class="place"
+                    data-name="Tarim Garden"
+                    data-location="TODO"
+                    data-stars="6">
 
-            <!-- copy this template to add a new place! -->
-            <!--
-            <div class="place"
-                data-name="Example Place"
-                data-url="https://website.com/"
-                data-location="123 doodoo road"
-                data-stars="4">
+                    <p class="drain-text">Drain had this to say about this place. Blah blah blah!</p>
+                    <p class="hana-text">Hana had this to say about this place. Blah blah blah!</p>
+                    <div class="tags">
+                        <p>halal</p>
+                        <p>xinjiang</p>
+                        <p>spicy</p>
+                        <p>el camino passport</p>
+                    </div>
+                </div>
+                <div class="place"
+                    data-name="Noodle Talk"
+                    data-location="123 doodoo road"
+                    data-stars="4">
 
-                <p class="drain-text">Drain had this to say about this place. Blah blah blah!</p>
-                <p class="hana-text">Hana had this to say about this place. Blah blah blah!</p>
-                <div class="tags">
-                    <p>tag1</p>
-                    <p>tag2</p>
-                    <p>tag3</p>
+                    <p class="drain-text">Drain had this to say about this place. Blah blah blah!</p>
+                    <p class="hana-text">Hana had this to say about this place. Blah blah blah!</p>
+                    <div class="tags">
+                        <p>chinese</p>
+                        <p>el camino passport</p>
+                        <p>spicy</p>
+                    </div>
                 </div>
             </div>
-            -->
-
-            <div class="place"
-                data-name="Tarim Garden"
-                data-location="TODO"
-                data-stars="5">
-
-                <p class="drain-text">Drain had this to say about this place. Blah blah blah!</p>
-                <p class="hana-text">Hana had this to say about this place. Blah blah blah!</p>
-                <div class="tags">
-                    <p>halal</p>
-                    <p>xinjiang</p>
-                    <p>spicy</p>
-                    <p>el camino passport</p>
-                </div>
-            </div>
-
-            <!--
-            <div class="place"
-                data-name="Noodle Talk"
-                data-location="123 doodoo road"
-                data-stars="4">
-
-                <p class="drain-text">Drain had this to say about this place. Blah blah blah!</p>
-                <p class="hana-text">Hana had this to say about this place. Blah blah blah!</p>
-                <div class="tags">
-                    <p>chinese</p>
-                    <p>el camino passport</p>
-                    <p>spicy</p>
-                </div>
-            </div>
-        -->
-
-        </div>
+        </main>
         <script src="scripts/food.js"></script>
     </body>
 </html>
