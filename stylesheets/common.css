@@ -4,7 +4,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 12px;
+    width: 18px;
     background: #5BCEFA;
 }
 
