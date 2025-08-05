@@ -16,11 +16,29 @@
         </div>
         <div id="book">
             <div class="book-page" id="book-page-template" style="display: none">
+                <div class="left">
+                    <h1 class="place-name">Place Name</h1>
+                    <span class="place-location">location</span>
+                    <img src="images/poopoocat.jpg">
+                    <span class="place-stars"></span>
+                </div>
+                <div class="right">
+                    <div class="hana-sez">
+                        <img src="resources/hanaIdle.gif">
+                        <i>hana sez:</i>
+                    </div>
+                    <div class="drain-sez">
+                        <img src="resources/drainIdle.gif">
+                        <i>drain sez:</i>
+                    </div>
+                </div>    
+            </div>
+            <!--<div class="book-page" id="book-page-template" style="display: none">
                 <h1 class="place-name"></h1>
                 <p>Location: <span class="place-location">location</span> / stars: <span class="place-stars"></span></p>
                 <div class="drain-text" style="color: #ff0000"></div>
                 <div class="hana-text" style="color: #0000ff"></div>
-            </div>
+            </div>-->
         </div>
         <div id="filters" style="border: 1px solid green">
             <span>filters!</span>
@@ -35,6 +53,7 @@
             <!--
             <div class="place"
                 data-name="Example Place"
+                data-url="https://website.com/"
                 data-location="123 doodoo road"
                 data-stars="4">
 
@@ -63,6 +82,7 @@
                 </div>
             </div>
 
+            <!--
             <div class="place"
                 data-name="Noodle Talk"
                 data-location="123 doodoo road"
@@ -76,6 +96,7 @@
                     <p>spicy</p>
                 </div>
             </div>
+        -->
 
         </div>
         <script src="scripts/food.js"></script>

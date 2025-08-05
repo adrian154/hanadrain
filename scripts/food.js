@@ -17,8 +17,8 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
     bookPage.querySelector(".place-name").textContent = placeDiv.dataset.name;
     bookPage.querySelector(".place-location").textContent = placeDiv.dataset.location;
     bookPage.querySelector(".place-stars").textContent = placeDiv.dataset.stars;
-    bookPage.querySelector(".drain-text").append(placeDiv.querySelector(".drain-text"));
-    bookPage.querySelector(".hana-text").append(placeDiv.querySelector(".hana-text"));
+    bookPage.querySelector(".hana-sez").append(...placeDiv.querySelector(".hana-text").childNodes);
+    bookPage.querySelector(".drain-sez").append(...placeDiv.querySelector(".drain-text").childNodes);
     
     // collect tags
     const tags = Array.from(placeDiv.querySelector(".tags").children).map(elt => elt.textContent);
