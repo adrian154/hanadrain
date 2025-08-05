@@ -1,0 +1,30 @@
+#oat-table {
+    background-color: var(--pink);
+    border-collapse: collapse;
+}
+
+#oat-table td,
+#oat-table th {
+    padding: 0.5em;
+}
+
+#oat-table th {
+    background-color: var(--pink-darker);
+}
+
+#oat-table .oat-table-separator td {
+    border-top: 1px solid #804f59;
+}
+
+#oat-table td {
+    border-top: 1px solid var(--pink-darker);
+}
+
+#oat-table .oat-table-separator td:first-child {
+    text-align: center;
+    font-weight: bold;
+}
+
+#oat-table td:last-child {
+    text-align: center;
+}
