@@ -1,12 +1,34 @@
 body {
-
-    width: calc(3/2 * 100vh);
+    padding: 0 2em;
+    display: flex;
+    flex-direction: row;
     margin: auto;
-    padding: 1em;
+}
 
+main {
+    width: calc(3/2 * 100vh);
     display: flex;
     flex-direction: column;
+    flex-grow: 0;
+}
 
+nav {
+    flex: 10em;
+    flex-grow: 0;
+    padding-top: 3em;
+}
+
+#contents-list {
+    padding-left: 0.5em;
+}
+
+#contents-list li {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#contents-list li:hover {
+    font-style: italic;
 }
 
 .tag,
@@ -25,27 +47,31 @@ body {
 
 #book {
     position: relative;
-    background-image: url("../resources/foodStill.png");
+    background-image: url("../resources/food/foodStill.png");
     aspect-ratio: 3/2;
     width: 100%;
     background-size: 100%;
     box-sizing: border-box;
 }
 
+#book.flipping {
+    background-image: url("../resources/food/foodForwards.gif");
+}
+
 .book-page .left {
     position: absolute;
-    top: 6.8em;
-    left: 6.2em;
-    width: 25em;
-    height: 29em;
+    top: 15%;
+    left: 9%;
+    width: 37%;
+    height: 64%;
 }
 
 .book-page .right {
     position: absolute;
-    top: 6.8em;
-    left: 36em;
-    width: 25em;
-    height: 29em;
+    top: 15%;
+    left: 52.5%;
+    width: 37%;
+    height: 64%;
 }
 
 .book-page h1 {
@@ -68,7 +94,7 @@ body {
 .drain-sez { background-color: var(--pink); }
 
 .hana-sez, .drain-sez {
-    padding: 0.5em 0.8em;
+    padding: 1em;
     margin: 1em 0;
 }
 
