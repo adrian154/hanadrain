@@ -54,9 +54,8 @@ nav {
     box-sizing: border-box;
 }
 
-#book.flipping {
-    background-image: url("../resources/food/foodForwards.gif");
-}
+#book.flip-forward { background-image: url("../resources/food/foodForwards.gif"); }
+#book.flip-backward { background-image: url("../resources/food/foodBackwards.gif"); }
 
 .book-page .left {
     position: absolute;

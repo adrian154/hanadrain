@@ -36,30 +36,40 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
     // also add to TOC
     const tocEntry = document.createElement("span");
     tocEntry.textContent = placeDiv.dataset.name;
-    tocEntry.addEventListener("click", () => {
-
-        if(currentlyShown)
-            currentlyShown.style.display = "none";
-        book.classList.add("flipping");
-        currentlyShown = bookPage;
-        setTimeout(() => {
-            bookPage.style.display = "";
-            book.classList.remove("flipping");
-        }, 600);
-    
-    });
 
     // collect tags
     const tags = Array.from(placeDiv.querySelector(".tags").children).map(elt => elt.textContent);
     for(const tag of tags)
         tagsSet.add(tag);
 
-    places.push({name: placeDiv.dataset.name, tags: tags, page: bookPage, tocEntry: tocEntry});
+    // add to list
+    const place = {name: placeDiv.dataset.name, tags: tags, page: bookPage, tocEntry: tocEntry};
+    places.push(place);
+
+    tocEntry.addEventListener("click", () => {
+
+        if(currentlyShown)
+            currentlyShown.page.style.display = "none";
+
+        if(place.position > currentlyShown?.position)
+            book.classList.add("flip-forward");
+        else
+            book.classList.add("flip-backward");
+
+        currentlyShown = place;
+        setTimeout(() => {
+            bookPage.style.display = "";
+            book.classList.remove("flip-forward");
+            book.classList.remove("flip-backward");
+        }, 600);
+    
+    });
 
 });
 
 // insert toc in order
-places.sort((a,b) => a.name.localeCompare(b.name)).forEach(place => {
+places.sort((a,b) => a.name.localeCompare(b.name)).forEach((place, i) => {
+    place.position = i;
     toc.append(place.tocEntry, " \u2219 ");
 });
 
