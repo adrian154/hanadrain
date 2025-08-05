@@ -64,7 +64,7 @@ body {
     height: auto;
 }
 
-.hana-sez { background-color: var(--cyan);}
+.hana-sez { background-color: var(--cyan); }
 .drain-sez { background-color: var(--pink); }
 
 .hana-sez, .drain-sez {
@@ -74,6 +74,11 @@ body {
 
 .hana-sez img,
 .drain-sez img {
-    float: left;
     width: 4em;
+    height: 2.5em;
+    object-fit: contain;
+    margin-right: 7px;
 }
+
+.hana-sez img { float: left; }
+.drain-sez img { float: right; }
