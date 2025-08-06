@@ -48,8 +48,11 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
 
     tocEntry.addEventListener("click", () => {
 
-        if(currentlyShown)
+        if(currentlyShown) {
             currentlyShown.page.style.display = "none";
+            currentlyShown.tocEntry.style.fontWeight = "";
+        }
+        tocEntry.style.fontWeight = "bold";
 
         if(place.position > currentlyShown?.position)
             book.classList.add("flip-forward");
