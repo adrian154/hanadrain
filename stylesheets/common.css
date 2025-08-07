@@ -34,5 +34,5 @@ p.subtitle {
 }
 
 html{
-        cursor: url('cursor.gif'), auto;
+        cursor: url('cursor.gif');
       }
