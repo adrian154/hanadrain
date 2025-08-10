@@ -27,7 +27,10 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
     bookPage.style.display = "none";
     book.append(bookPage);
 
-    bookPage.querySelector(".place-name").textContent = placeDiv.dataset.name;
+    const link = bookPage.querySelector(".place-name");
+    link.textContent = placeDiv.dataset.name;
+    link.href = placeDiv.dataset.url;
+
     bookPage.querySelector(".place-location").textContent = placeDiv.dataset.location;
     bookPage.querySelector(".place-stars").src = STARS_IMGS[Number(placeDiv.dataset.stars)];
     bookPage.querySelector(".hana-sez").append(...placeDiv.querySelector(".hana-text").childNodes);
@@ -50,9 +53,9 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
 
         if(currentlyShown) {
             currentlyShown.page.style.display = "none";
-            currentlyShown.tocEntry.style.fontWeight = "";
+            currentlyShown.tocEntry.classList.remove("selected");
         }
-        tocEntry.style.fontWeight = "bold";
+        tocEntry.classList.add("selected");
 
         if(place.position > currentlyShown?.position)
             book.classList.add("flip-forward");
@@ -81,10 +84,9 @@ const tagFilterButtons = {};
 for(const tag of Array.from(tagsSet).sort((a, b) => a.localeCompare(b))) {
     
     const filter = document.createElement("span");
-    filter.classList.add("filter", "active");
+    filter.classList.add("filter");
     filter.textContent = tag;
     filters.append(filter);
-    enabledTagsSet.add(tag);
     tagFilterButtons[tag] = filter;
 
     filter.addEventListener("click", () => {
@@ -107,19 +109,13 @@ const updateFilters = () => {
             }
         }
         if(shown)
-            place.tocEntry.style.fontSize = "1em";
+            place.tocEntry.classList.add("shown");
         else
-            place.tocEntry.style.fontSize = "0.5em";
+            place.tocEntry.classList.remove("shown");
     }
 };
 
-document.getElementById("select-all").addEventListener("click", () => {
-    for(const tag of tagsSet) {
-        enabledTagsSet.add(tag);
-        tagFilterButtons[tag].classList.add("active");
-    }
-    updateFilters();
-});
+updateFilters();
 
 document.getElementById("deselect-all").addEventListener("click", () => {
     for(const tag of tagsSet) {

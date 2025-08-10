@@ -3,6 +3,8 @@ body {
     display: flex;
     flex-direction: row;
     margin: auto;
+    background-image: url("../resources/food/tablecloth.png");
+    background-size: 20em;
 }
 
 main {
@@ -10,6 +12,7 @@ main {
     display: flex;
     flex-direction: column;
     flex-grow: 0;
+    /*transform: rotate(5deg);*/
 }
 
 nav {
@@ -23,12 +26,23 @@ nav {
 }
 
 #contents-list span {
-    text-decoration: underline;
     cursor: pointer;
+    font-size: 11pt;
+    opacity: 60%;
 }
-
-#contents-list li:hover {
+#contents-list span:hover {
     font-style: italic;
+}
+#contents-list span.shown {
+    text-decoration: underline dotted;
+}
+#contents-list span.shown,
+#contents-list span.selected {
+    opacity: 90%;
+}
+#contents-list span.selected {
+    font-weight: bold;
+    opacity: 100%;
 }
 
 .tag,
@@ -42,14 +56,16 @@ nav {
     background-color: #C48B96;
     cursor: pointer;
     display: inline-block;
+    margin: 2px;
 }
 .filter.active { background-color: #F5A9B8 ; }
 
 #book {
     position: relative;
     background-image: url("../resources/food/foodStill.png");
-    aspect-ratio: 3/2;
-    width: 100%;
+    aspect-ratio: 720/476;
+    width: 80%;
+    margin: 0 auto;
     background-size: 100%;
     box-sizing: border-box;
 }
@@ -59,24 +75,32 @@ nav {
 
 .book-page .left {
     position: absolute;
-    top: 15%;
-    left: 9%;
-    width: 37%;
-    height: 64%;
+    top: 8%;
+    left: 7%;
+    width: 40%;
+    height: 83%;
 }
 
 .book-page .right {
     position: absolute;
-    top: 15%;
+    top: 8%;
     left: 52.5%;
-    width: 37%;
-    height: 64%;
+    width: 40%;
+    height: 83%;
 }
 
 .book-page h1 {
     font-size: 2.0em;
     font-weight: normal;
-    margin-bottom: 0.2em;
+    margin-bottom: 5px;
+}
+
+.book-page h1 a, a:visited {
+    color: initial;
+    text-decoration: underline dotted var(--cyan-darker);
+}
+.book-page h1 a:hover {
+    font-style: italic;
 }
 
 .book-page .place-location {
