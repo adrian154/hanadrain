@@ -17,7 +17,8 @@ const STARS_IMGS = [
     "resources/food/starsMega.png"
 ];
 
-let currentlyShown = null;
+let currentlyShown = null,
+    animateTimeout = null;
 
 document.getElementById("places").querySelectorAll(".place").forEach(placeDiv => {
     
@@ -51,24 +52,35 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
 
     tocEntry.addEventListener("click", () => {
 
+        // if already shown, do nothing
+        if(currentlyShown == place) {
+            return;
+        }
+
+        // hide currently shown
         if(currentlyShown) {
             currentlyShown.page.style.display = "none";
             currentlyShown.tocEntry.classList.remove("selected");
+            clearTimeout(animateTimeout);
         }
-        tocEntry.classList.add("selected");
 
+        // display book flip animation
         if(place.position > currentlyShown?.position)
             book.classList.add("flip-forward");
         else
             book.classList.add("flip-backward");
 
+        tocEntry.classList.add("selected");
         currentlyShown = place;
-        setTimeout(() => {
+        window.location.hash = encodeURIComponent(place.name);
+
+        // show book page when done animating
+        animateTimeout = setTimeout(() => {
             bookPage.style.display = "";
             book.classList.remove("flip-forward");
             book.classList.remove("flip-backward");
         }, 600);
-    
+
     });
 
 });
@@ -85,7 +97,7 @@ for(const tag of Array.from(tagsSet).sort((a, b) => a.localeCompare(b))) {
     
     const filter = document.createElement("span");
     filter.classList.add("filter");
-    filter.textContent = tag;
+    filter.textContent = `${tag} (${places.filter(place => place.tags.includes(tag)).length})`;
     filters.append(filter);
     tagFilterButtons[tag] = filter;
 
@@ -124,3 +136,10 @@ document.getElementById("deselect-all").addEventListener("click", () => {
     }
     updateFilters();
 });
+
+const place = places.find(place => place.name == decodeURIComponent(window.location.hash).slice(1));
+if(place) {
+    currentlyShown = place;
+    place.tocEntry.classList.add("selected");
+    place.page.style.display = "";
+}
