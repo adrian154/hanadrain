@@ -27,7 +27,6 @@ nav {
 
 #contents-list span {
     cursor: pointer;
-    font-size: 11pt;
     opacity: 60%;
 }
 #contents-list span:hover {
@@ -38,7 +37,7 @@ nav {
 }
 #contents-list span.shown,
 #contents-list span.selected {
-    opacity: 90%;
+    opacity: 100%;
 }
 #contents-list span.selected {
     font-weight: bold;
@@ -119,6 +118,7 @@ nav {
 .hana-sez, .drain-sez {
     padding: 1em;
     margin: 1em 0;
+    min-height: 2.5em;
 }
 
 .hana-sez img,

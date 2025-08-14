@@ -1,4 +1,4 @@
-const places = [];
+let places = [];
 const tagsSet = new Set();
 const enabledTagsSet = new Set();
 
@@ -19,6 +19,44 @@ const STARS_IMGS = [
 
 let currentlyShown = null,
     animateTimeout = null;
+
+const showPlace = place => {
+
+    // if already shown, do nothing
+    if(currentlyShown == place) {
+        return;
+    }
+
+    place.tocEntry.classList.add("selected");
+    window.location.hash = encodeURIComponent(place.name);
+
+    // hide currently shown
+    if(currentlyShown) {
+        
+        currentlyShown.page.style.display = "none";
+        currentlyShown.tocEntry.classList.remove("selected");
+        clearTimeout(animateTimeout);
+
+        // display book flip animation
+        if(place.position > currentlyShown?.position)
+            book.classList.add("flip-forward");
+        else
+            book.classList.add("flip-backward");
+
+        // show book page when done animating
+        animateTimeout = setTimeout(() => {
+            place.page.style.display = "";
+            book.classList.remove("flip-forward");
+            book.classList.remove("flip-backward");
+        }, 600);
+
+    } else {
+        place.page.style.display = "";
+    }
+
+    currentlyShown = place;
+
+};
 
 document.getElementById("places").querySelectorAll(".place").forEach(placeDiv => {
     
@@ -51,44 +89,16 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
     places.push(place);
 
     tocEntry.addEventListener("click", () => {
-
-        // if already shown, do nothing
-        if(currentlyShown == place) {
-            return;
-        }
-
-        // hide currently shown
-        if(currentlyShown) {
-            currentlyShown.page.style.display = "none";
-            currentlyShown.tocEntry.classList.remove("selected");
-            clearTimeout(animateTimeout);
-        }
-
-        // display book flip animation
-        if(place.position > currentlyShown?.position)
-            book.classList.add("flip-forward");
-        else
-            book.classList.add("flip-backward");
-
-        tocEntry.classList.add("selected");
-        currentlyShown = place;
-        window.location.hash = encodeURIComponent(place.name);
-
-        // show book page when done animating
-        animateTimeout = setTimeout(() => {
-            bookPage.style.display = "";
-            book.classList.remove("flip-forward");
-            book.classList.remove("flip-backward");
-        }, 600);
-
+        showPlace(place);
     });
 
 });
 
 // insert toc in order
-places.sort((a,b) => a.name.localeCompare(b.name)).forEach((place, i) => {
+places = places.sort((a,b) => a.name.localeCompare(b.name)).map((place, i) => {
     place.position = i;
     toc.append(place.tocEntry, " \u2219 ");
+    return place;
 });
 
 // set up tags
@@ -113,21 +123,43 @@ for(const tag of Array.from(tagsSet).sort((a, b) => a.localeCompare(b))) {
 
 const updateFilters = () => {
     
+    const mode = document.querySelector("input[name=filtermode]:checked").value;
+
     for(const place of places) {
+
         let shown = false;
-        for(const tag of place.tags) {
-            if(enabledTagsSet.has(tag)) {
+        
+        if(mode == "matchany") {
+            for(const tag of place.tags) {
+                if(enabledTagsSet.has(tag)) {
+                    shown = true;
+                }
+            }
+        } else if(mode == "matchall") {
+            if(enabledTagsSet.size == 0) {
+                shown = false;
+            } else {
                 shown = true;
+                for(const tag of enabledTagsSet) {
+                    if(!place.tags.includes(tag)) {
+                        shown = false;
+                    }
+                }
             }
         }
+        
         if(shown)
             place.tocEntry.classList.add("shown");
         else
             place.tocEntry.classList.remove("shown");
+
     }
 };
 
 updateFilters();
+
+document.getElementById("filter-matchany").addEventListener("change", updateFilters);
+document.getElementById("filter-matchall").addEventListener("change", updateFilters);
 
 document.getElementById("deselect-all").addEventListener("click", () => {
     for(const tag of tagsSet) {
@@ -139,7 +171,22 @@ document.getElementById("deselect-all").addEventListener("click", () => {
 
 const place = places.find(place => place.name == decodeURIComponent(window.location.hash).slice(1));
 if(place) {
-    currentlyShown = place;
-    place.tocEntry.classList.add("selected");
-    place.page.style.display = "";
+    showPlace(place);
 }
+
+const move = offset => {
+    const next = places[currentlyShown?.position + offset];
+    if(next) {
+        showPlace(next);
+    }
+};
+
+window.addEventListener("keydown", event => {
+    if(event.key == "ArrowLeft") {
+        move(-1); 
+    } else if(event.key == "ArrowRight") {
+        move(1);
+    }
+});
+
+// TODO: left/right controls, and clickable buttons for forward/back
