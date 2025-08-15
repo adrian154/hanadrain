@@ -1,3 +1,8 @@
+body {
+    background-image: url("resources/oatbg.png");
+    background-size: 15em;
+}
+
 #oat-table {
     background-color: var(--pink);
     border-collapse: collapse;
