@@ -2,6 +2,13 @@ body {
     max-width: 50em;
     padding: 1em;
     margin: auto;
+    background-image: url("../resources/underConstruction.gif");
+    background-size: 20em;
+}
+
+main {
+    background-color: #eeeeee;
+    margin: 1em; padding: 1em;
 }
 
 /* draggable-cat starts as hidden */

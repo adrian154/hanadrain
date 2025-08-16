@@ -1,11 +1,13 @@
 body {
-    padding: 0 2em;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    background-image: url("../resources/food/oatbg.png");
+    background-image: url("../resources/oatbg.png");
     background-size: 15em;
 }
+
+main {
+    background-color: #eeeeee;
+    margin: 1em; padding: 1em;
+}
+
 
 #oat-table {
     background-color: var(--pink);

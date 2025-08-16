@@ -74,17 +74,17 @@ nav {
 
 .book-page .left {
     position: absolute;
-    top: 8%;
-    left: 7%;
-    width: 40%;
+    top: 4%;
+    left: 6%;
+    width: 41%;
     height: 83%;
 }
 
 .book-page .right {
     position: absolute;
-    top: 8%;
+    top: 4%;
     left: 52.5%;
-    width: 40%;
+    width: 41%;
     height: 83%;
 }
 
@@ -114,6 +114,8 @@ nav {
 .book-page .place-image {
     aspect-ratio: 3/2;
     object-fit: contain;
+    margin: 1em 0;
+    background-color: #000000;
 }
 
 .hana-sez { background-color: var(--cyan); }
