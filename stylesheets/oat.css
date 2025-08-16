@@ -1,5 +1,9 @@
 body {
-    background-image: url("resources/oatbg.png");
+    padding: 0 2em;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    background-image: url("../resources/food/oatbg.png");
     background-size: 15em;
 }
 
