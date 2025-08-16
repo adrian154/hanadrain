@@ -7,7 +7,7 @@
 }
 .ttt-cell {
     background: #fff;
-    border: 2px solid #333;
+    border: 2px var(--cyan) solid;
     font-size: 2rem;
     display: flex;
     align-items: center;
@@ -19,5 +19,5 @@
     transition: background 0.2s;
 }
 .ttt-cell:hover {
-    background: pink;
+    background: var(--pink);
 }

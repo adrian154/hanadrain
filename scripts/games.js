@@ -22,11 +22,11 @@ function tttHandleClick(e) {
     const winner = tttCheckWinner(tttBoard);
     if (winner) {
         document.getElementById("ttt-status").textContent =
-            winner === "Tie" ? "It's a tie!" : `${winner} wins!`;
+            winner === "Tie" ? "no one won, try again nyaaaa" : `${winner} is a winner! consider becoming a dictator lol`;
         tttActive = false;
     } else {
         tttPlayer = tttPlayer === "X" ? "O" : "X";
-        document.getElementById("ttt-status").textContent = `Turn: ${tttPlayer}`;
+        document.getElementById("ttt-status").textContent = `placing for: ${tttPlayer}`;
     }
 }
 
@@ -35,7 +35,7 @@ function resetTicTacToe() {
     tttPlayer = "X";
     tttActive = true;
     document.querySelectorAll("#tictactoe-board .ttt-cell").forEach(cell => cell.textContent = "");
-    document.getElementById("ttt-status").textContent = "Turn: X";
+    document.getElementById("ttt-status").textContent = "placing for: X";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
