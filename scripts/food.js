@@ -75,6 +75,12 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
     bookPage.querySelector(".hana-sez").append(...placeDiv.querySelector(".hana-text").childNodes);
     bookPage.querySelector(".drain-sez").append(...placeDiv.querySelector(".drain-text").childNodes);
     
+    // identify images
+    const images = FOOD_IMAGES[placeDiv.dataset.imgId];
+    if(images) {
+        bookPage.querySelector(".place-image").src = images[0];
+    }
+
     // also add to TOC
     const tocEntry = document.createElement("span");
     tocEntry.textContent = placeDiv.dataset.name;
@@ -189,4 +195,4 @@ window.addEventListener("keydown", event => {
     }
 });
 
-// TODO: left/right controls, and clickable buttons for forward/back
+// TODO: left/right buttons

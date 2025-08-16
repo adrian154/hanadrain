@@ -109,7 +109,11 @@ nav {
 
 .book-page img {
     width: 100%;
-    height: auto;
+}
+
+.book-page .place-image {
+    aspect-ratio: 3/2;
+    object-fit: contain;
 }
 
 .hana-sez { background-color: var(--cyan); }
