@@ -1,0 +1,23 @@
+#tictactoe-board {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+    gap: 5px;
+    margin: 20px 0;
+}
+.ttt-cell {
+    background: #fff;
+    border: 2px var(--cyan) solid;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+    user-select: none;
+    transition: background 0.2s;
+}
+.ttt-cell:hover {
+    background: var(--pink);
+}
