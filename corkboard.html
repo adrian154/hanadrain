@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>corkboard</title>
+        <link rel="stylesheet" href="stylesheets/corkboard.css">
+    </head>
+    <body>
+        
+        <button id="add-postit">ADD A NEW ONE!</button>
+
+        <div id="postit-editor" style="display: none">
+            <div>
+                <img src="resources/corkboard/postit.png" id="editor-note-img">
+                <canvas id="postit-canvas"></canvas>
+                <button id="editor-done">done</button>
+                <button id="editor-discard">fuckin give up</button> <!-- throw into garbage -->
+            </div>
+        </div>
+
+        <script src="scripts/corkboard.js"></script>
+    </body>
+</html>

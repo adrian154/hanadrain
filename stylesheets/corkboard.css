@@ -1,0 +1,44 @@
+:root {
+    --note-size: 250px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-image: url("../resources/corkboard/cork.jpg");
+    background-size: cover;
+    overflow: hidden;
+}
+
+#postit-editor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;   
+    z-index: 1;
+}
+
+#postit-editor > div {
+    margin: auto;
+    position: relative;
+}
+
+#postit-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.note {
+    position: absolute;
+    filter: drop-shadow(0 10px 10px rgb(0, 0, 0, 50%));
+    z-index: 0;
+}
+
+.note img {
+    width: var(--note-size);
+    height: var(--note-size);
+}

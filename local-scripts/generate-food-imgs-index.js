@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const filenames = fs.readdirSync("images/food");
-const ids = Array.from(new Set(filenames.map(s => s.match(/(\w+)\d+\./)[1])));
+const ids = Array.from(new Set(filenames.map(s => s.match(/(.*[a-zA-Z])(\d+)\.png/)[1]))); // ids may start with numbers but not end with them
 
 fs.writeFileSync(
     "scripts/generated/food-index.js", 

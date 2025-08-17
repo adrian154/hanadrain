@@ -79,6 +79,8 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
     const images = FOOD_IMAGES[placeDiv.dataset.imgId];
     if(images) {
         bookPage.querySelector(".place-image").src = images[0];
+    } else {
+        console.log(`warning - ${placeDiv.dataset.name} has no associated images`);
     }
 
     // also add to TOC
@@ -91,7 +93,7 @@ document.getElementById("places").querySelectorAll(".place").forEach(placeDiv =>
         tagsSet.add(tag);
 
     // add to list
-    const place = {name: placeDiv.dataset.name, tags: tags, page: bookPage, tocEntry: tocEntry};
+    const place = {dataDiv: placeDiv, name: placeDiv.dataset.name, tags: tags, page: bookPage, tocEntry: tocEntry};
     places.push(place);
 
     tocEntry.addEventListener("click", () => {
@@ -196,3 +198,4 @@ window.addEventListener("keydown", event => {
 });
 
 // TODO: left/right buttons
+Object.keys(FOOD_IMAGES).filter(id => !places.find(place => place.dataDiv.dataset.imgId == id)).forEach(key => console.log(`warning - no place matches image key ${key}`));
