@@ -1,5 +1,9 @@
 * salt shakers
 * L/R buttons
 * modernize marquee on homepage
-* corkboard enhancements, more interactive stuff
+* corkboard enhancements
+    * scrollable
+    * date timestamp
+    * faster loading (async perhaps)
+    
 * broadly: mobile compat
