@@ -4,9 +4,9 @@ let tttActive = true;
 
 function tttCheckWinner(b) {
     const wins = [
-        [0,1,2],[2,3,5],[2,4,5],
-        [0,7],[1,3,5,7],[4,7],
-        [0,5,6],[2,3,6],[1,4,6]
+        [0,1,2],[2,4,5],[6,7,8],
+        [0,3,6],[1,4,7],[2,5,8],
+        [0,4,8],[2,4,6],[1,4,8]
     ];
     for (const [a,b1,c] of wins) {
         if (b[a] && b[a] === b[b1] && b[a] === b[c]) return b[a];
@@ -22,11 +22,11 @@ function tttHandleClick(e) {
     const winner = tttCheckWinner(tttBoard);
     if (winner) {
         document.getElementById("ttt-status").textContent =
-            winner === "Tie" ? "no one won, try again nyaaaa" : `${winner} is a winner! consider becoming a dictator lol`;
+            winner === "Tie" ? "THERE ARE NO WINNERS YOU MUST PLAY AGAIN OR I BLOW YOU UP WITH A BOMB!!!!!!!!!!" : `${winner} is the best person in the whole world because THey JUST WON THE GAME!!!!`;
         tttActive = false;
     } else {
         tttPlayer = tttPlayer === "X" ? "O" : "X";
-        document.getElementById("ttt-status").textContent = `placing for: ${tttPlayer}`;
+        document.getElementById("ttt-status").textContent = `${tttPlayer}'s turn!!`;
     }
 }
 
@@ -35,7 +35,7 @@ function resetTicTacToe() {
     tttPlayer = "X";
     tttActive = true;
     document.querySelectorAll("#tictactoe-board .ttt-cell").forEach(cell => cell.textContent = "");
-    document.getElementById("ttt-status").textContent = "placing for: X";
+    document.getElementById("ttt-status").textContent = "X's turn!!!!";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
