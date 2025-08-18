@@ -1,7 +1,7 @@
 /*
 ideas - pens, pencil, highlighter/marker, printer
 */
-const NOTE_RESOLUTION = 500;
+const NOTE_RESOLUTION = 200;
 
 const editor = document.getElementById("postit-editor"),
       editorNoteImg = document.getElementById("editor-note-img");
@@ -11,10 +11,6 @@ const canvas = document.getElementById("postit-canvas"),
 
 canvas.width = NOTE_RESOLUTION;
 canvas.height = NOTE_RESOLUTION;
-canvas.style.width = NOTE_RESOLUTION/window.devicePixelRatio + "px";
-canvas.style.height = canvas.style.width;
-editorNoteImg.style.width = canvas.style.width;
-editorNoteImg.style.height = canvas.style.width;
 
 // create a note
 const createNote = dataUrl => {
@@ -38,10 +34,13 @@ const createNote = dataUrl => {
 
 };
 
-const moveNoteToMouse = (note, x, y) => {
+const moveNoteToMouse = (note, mouseX, mouseY) => {
     const rect = note.getBoundingClientRect();
-    note.style.left = (x - rect.width / 2) + "px";
-    note.style.top = (y - 10) + "px";
+    const x = (mouseX-rect.width/2), y = mouseY - 10;
+    note.style.left = x + "px";
+    note.style.top = y + "px";
+    note.x = x;
+    note.y = y;
 };
 
 // editor logic
@@ -53,17 +52,42 @@ let mouseDown = false,
     mouseY = 0;
     
 let placingNote = null;
+let scale = 1;
+
+const getXY = touchEvent => {
+    const rect = canvas.getBoundingClientRect();
+    const touch = touchEvent.targetTouches.item(0);
+    return [(touch.clientX - rect.left)*scale, (touch.clientY - rect.top)*scale];
+};
 
 canvas.addEventListener("mousedown", event => {
     mouseDown = true;
     ctx.beginPath();
-    ctx.moveTo(event.offsetX*window.devicePixelRatio, event.offsetY*window.devicePixelRatio);
-    ctx.lineTo(event.offsetX*window.devicePixelRatio+1, event.offsetY*window.devicePixelRatio+1);
+    const x = event.offsetX * scale,
+          y = event.offsetY * scale;
+    ctx.moveTo(x, y);
+    ctx.lineTo(x+1, y+1);
+});
+
+canvas.addEventListener("touchstart", event => {
+    mouseDown = true;
+    ctx.beginPath();
+    const [x, y] = getXY(event);
+    ctx.moveTo(x, y);
+    ctx.lineTo(x+1, y+1);
 });
 
 canvas.addEventListener("mousemove", event => {
     if(mouseDown) {
-        ctx.lineTo(event.offsetX*window.devicePixelRatio, event.offsetY*window.devicePixelRatio);
+        ctx.lineTo(event.offsetX*scale, event.offsetY*scale);
+        ctx.stroke();
+    }
+});
+
+canvas.addEventListener("touchmove", event => {
+    if(mouseDown) {
+        const [x, y] = getXY(event);
+        ctx.lineTo(x, y);
         ctx.stroke();
     }
 });
@@ -76,25 +100,38 @@ window.addEventListener("mousemove", event => {
     mouseY = event.clientY;
 });
 
+const finishPlacingNote = () => {
+    
+    // upload
+    fetch("https://apis.bithole.dev/hanadrain/corkboard", {
+        body: JSON.stringify({
+            x: placingNote.x,
+            y: placingNote.y,
+            data: canvas.toDataURL()
+        }),
+        headers: {"Content-Type": "application/json"},
+        method: "POST"
+    }).then(resp => console.log(resp)).catch(console.error);
+
+    // fix the position of the note
+    placingNote = null;
+};
+
 window.addEventListener("mouseup", event => {
     if(mouseDown) {
         ctx.stroke();
     } else if(placingNote) {
+        finishPlacingNote();
+    }
+    mouseDown = false;
+    placing = false;
+});
 
-        // fix position of the note
-        placingNote = null;
-
-        // upload
-        fetch("https://apis.bithole.dev/hanadrain/corkboard", {
-            body: JSON.stringify({
-                x: mouseX,
-                y: mouseY,
-                data: canvas.toDataURL()
-            }),
-            headers: {"Content-Type": "application/json"},
-            method: "POST"
-        }).then(resp => console.log(resp)).catch(console.error);
-
+window.addEventListener("touchend", event => {
+    if(mouseDown) {
+        ctx.stroke();
+    } else if(placingNote) {
+        finishPlacingNote();
     }
     mouseDown = false;
     placing = false;
@@ -113,8 +150,17 @@ document.getElementById("editor-done").addEventListener("click", () => {
 });
 
 document.getElementById("add-postit").addEventListener("click", () => {
+
     editor.style.display = "";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // set up canvas size
+    const rect = editorNoteImg.getBoundingClientRect();
+    canvas.style.width = rect.width + "px";
+    canvas.style.height = rect.height + "px";
+    scale = canvas.width/rect.width;
+
+
 });
 
 fetch("https://apis.bithole.dev/hanadrain/corkboard").then(resp => resp.json()).then(notes => {

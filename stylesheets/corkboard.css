@@ -1,5 +1,5 @@
 :root {
-    --note-size: 250px;
+    --note-size: 200px;
 }
 
 body {
@@ -38,7 +38,8 @@ body {
     z-index: 0;
 }
 
-.note img {
+.note img,
+#editor-note-img {
     width: var(--note-size);
     height: var(--note-size);
 }
