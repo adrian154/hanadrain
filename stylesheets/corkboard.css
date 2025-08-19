@@ -19,6 +19,7 @@ body {
     height: 100%;
     display: flex;   
     z-index: 1;
+    animation-duration: 900ms;
 }
 
 #postit-editor > div {
@@ -42,4 +43,33 @@ body {
 #editor-note-img {
     width: var(--note-size);
     height: var(--note-size);
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
+    }
+}
+
+#editor-discard-explosion {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.note span {
+    position: absolute;
+    top: 100%;
+    left: 1em;
+    font-size: 10pt;
+    color: white;
+    opacity: 80%;
+    display: none;
+}
+
+.note:hover span {
+    display: initial;
 }
