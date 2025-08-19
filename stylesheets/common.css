@@ -37,3 +37,27 @@ p.subtitle {
 html{
         cursor: url('cursor.gif');
       }
+
+::-moz-selection {
+  background: var(--cyan);
+}
+
+::selection {
+  background: var(--cyan);
+}
+
+a:link {
+  color: var(--pink);
+}
+
+a:visited {
+  color: var(--pink-darker);
+}
+
+a:hover {
+  color: var(--cyan-darker);
+}
+
+a:active {
+  color: var(--cyan);
+}
