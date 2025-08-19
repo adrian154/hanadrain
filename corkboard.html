@@ -7,15 +7,17 @@
         <link rel="stylesheet" href="stylesheets/corkboard.css">
     </head>
     <body>
-        <button id="add-postit">ADD A NEW ONE!</button>
+        <div id="notes-bar">
+
+        </div>
         <div id="postit-editor" style="display: none">
             <div>
-                <img src="resources/corkboard/postit.png" id="editor-note-img">
+                <img id="editor-note-img">
                 <canvas id="postit-canvas"></canvas>
-                <img src="resources/explosion.gif" id="editor-discard-explosion" style="display: none">
+                <img src="resources/corkboard/explosion.gif" id="editor-discard-explosion" style="display: none">
                 <br>
                 <button id="editor-done">done</button>
-                <button id="editor-discard">fuckin give up</button> <!-- throw into garbage -->
+                <button id="editor-discard">fuckin give up</button>
             </div>
         </div>
         <script src="scripts/corkboard.js"></script>
