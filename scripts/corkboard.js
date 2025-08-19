@@ -4,7 +4,8 @@ ideas - pens, pencil, highlighter/marker, printer
 const NOTE_RESOLUTION = 200;
 
 const editor = document.getElementById("postit-editor"),
-      editorNoteImg = document.getElementById("editor-note-img");
+      editorNoteImg = document.getElementById("editor-note-img"),
+      editorExplosion = document.getElementById("editor-discard-explosion");
       
 const canvas = document.getElementById("postit-canvas"),
       ctx = canvas.getContext("2d");
@@ -13,7 +14,7 @@ canvas.width = NOTE_RESOLUTION;
 canvas.height = NOTE_RESOLUTION;
 
 // create a note
-const createNote = dataUrl => {
+const createNote = (dataUrl, timestamp) => {
     
     const note = document.createElement("div");
     note.classList.add("note");
@@ -28,7 +29,12 @@ const createNote = dataUrl => {
     drawingImg.style.left = "0";
     drawingImg.style.top = "0";
     note.append(drawingImg);
-    
+
+    const date = new Date(timestamp);
+    const dateStr = document.createElement("span");
+    dateStr.textContent = date.toLocaleDateString() + " " + date.toLocaleTimeString();
+    note.append(dateStr);
+
     document.body.append(note);
     return note;
 
@@ -144,8 +150,24 @@ document.getElementById("editor-done").addEventListener("click", () => {
     }
 
     editor.style.display = "none";
-    placingNote = createNote(canvas.toDataURL());
+    placingNote = createNote(canvas.toDataURL(), Date.now());
     moveNoteToMouse(placingNote, mouseX, mouseY);
+
+});
+
+document.getElementById("editor-discard").addEventListener("click", () => {
+
+    if(!confirm("are you SURE? this will delete this post-it FOREVER!!")) {
+        return; 
+    }
+
+    editorExplosion.style.display = "";
+    editor.style.animationName = "fade-out";
+    setTimeout(() => {
+        editor.style.display = "none";
+        editor.style.animationName = "";
+        editorExplosion.style.display = "none";
+    }, 800);    
 
 });
 
@@ -160,12 +182,11 @@ document.getElementById("add-postit").addEventListener("click", () => {
     canvas.style.height = rect.height + "px";
     scale = canvas.width/rect.width;
 
-
 });
 
 fetch("https://apis.bithole.dev/hanadrain/corkboard").then(resp => resp.json()).then(notes => {
     for(const note of notes) {
-        const noteElem = createNote(note.data);
+        const noteElem = createNote(note.data, note.timestamp);
         noteElem.style.left = note.x + "px";
         noteElem.style.top = note.y + "px";
     }
