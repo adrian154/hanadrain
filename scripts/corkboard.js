@@ -1,7 +1,7 @@
 /*
 ideas - pens, pencil, highlighter/marker, printer
 */
-const NOTE_RESOLUTION = 200;
+const NOTE_RESOLUTION = 300;
 
 const editor = document.getElementById("postit-editor"),
       editorNoteImg = document.getElementById("editor-note-img"),

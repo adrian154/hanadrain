@@ -12,7 +12,6 @@ main {
     display: flex;
     flex-direction: column;
     flex-grow: 0;
-    /*transform: rotate(5deg);*/
 }
 
 nav {
@@ -69,6 +68,17 @@ nav {
     box-sizing: border-box;
 }
 
+#book-back-button, 
+#book-next-button {
+    width: 8em;
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
+}
+
+#book-back-button { left: 0; }
+#book-next-button { right: 0; }
+
 #book.flip-forward { background-image: url("../resources/food/foodForwards.gif"); }
 #book.flip-backward { background-image: url("../resources/food/foodBackwards.gif"); }
 
@@ -107,15 +117,29 @@ nav {
     margin-bottom: 4px;
 }
 
-.book-page img {
+.place-stars {
     width: 100%;
 }
 
-.book-page .place-image {
-    aspect-ratio: 3/2;
+.book-page-carousel {
+    width: 80%;
+    position: relative;
+    margin: 1.5em auto;
+}
+
+.book-page-carousel .place-image {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    margin: 1em 0;
-    background-color: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(10deg);
+}
+
+.carousel-napkin {
+    width: 100%;
+    transform: rotate(-10deg);
 }
 
 .hana-sez { background-color: var(--cyan); }

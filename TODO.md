@@ -1,9 +1,14 @@
-* salt shakers
-* L/R buttons
+eats
+* salt shaker tags
+
+homepage
 * modernize marquee on homepage
-* corkboard enhancements
-    * scrollable
-    * date timestamp
-    * faster loading (async perhaps)
-    
-* broadly: mobile compat
+
+corkboard
+* make date look better
+* BUG: touch note placement note supported
+* scrollable
+* improve loading
+
+cream
+* style page and add images

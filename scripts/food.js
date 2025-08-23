@@ -197,5 +197,8 @@ window.addEventListener("keydown", event => {
     }
 });
 
-// TODO: left/right buttons
+document.getElementById("book-back-button").addEventListener("click", () => move(-1));
+document.getElementById("book-next-button").addEventListener("click", () => move(1));
+
+// image warnings
 Object.keys(FOOD_IMAGES).filter(id => !places.find(place => place.dataDiv.dataset.imgId == id)).forEach(key => console.log(`warning - no place matches image key ${key}`));
