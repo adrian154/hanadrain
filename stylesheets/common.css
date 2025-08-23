@@ -61,3 +61,13 @@ a:hover {
 a:active {
   color: var(--cyan);
 }
+
+html,body {
+  cursor: url("../resources/cursor2.png"), auto;
+  animation: cursor 0.8s linear infinite;    
+}
+
+@keyframes cursor {
+  0% { cursor: url("../resources/cursor2.png"), auto; }
+  100% { cursor: url("../resources/cursor3.png"), auto; }
+}
