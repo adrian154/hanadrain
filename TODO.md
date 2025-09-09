@@ -1,5 +1,7 @@
 eats
 * salt shaker tags
+* map
+* superlatives
 
 homepage
 * modernize marquee on homepage
