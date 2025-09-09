@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>hanadrain</title>
+        <link rel="stylesheet" href="stylesheets/common.css">
+        <link rel="stylesheet" href="stylesheets/homepage.css">
+    </head>
+
+    <script>
+        options = ["baklava", "dumplings", "kimchi", "foccacia", "noodles", "oat milk", "biryani", "something else idk"];
+        const colors = ["#f5a9b8","#5bcefa","#ffe082","#8fc1de","#c48b96","#50a7cb","#ffd54f","#eeeeee"];
+        const wheel = document.getElementById('wheel');
+        const ctx = wheel.getContext('2d');
+        const slices = options.length;
+        const arc = 2 * Math.PI / slices;
+        let angle = 0;
+        let spinning = false;
+        let selected = null;
+
+        function drawWheel() {
+            ctx.clearRect(0,0,400,400);
+            for(let i=0; i<slices; i++) {
+                ctx.beginPath();
+                ctx.moveTo(200,200);
+                ctx.arc(200,200,180,arc*i+angle,arc*(i+1)+angle);
+                ctx.closePath();
+                ctx.fillStyle = colors[i % colors.length];
+                ctx.fill();
+                ctx.save();
+                ctx.translate(200,200);
+                ctx.rotate(arc*i + angle + arc/2);
+                ctx.textAlign = "right";
+                ctx.fillStyle = "#222";
+                ctx.font = "18px Arial";
+                ctx.fillText(options[i], 160, 10);
+                ctx.restore();
+            }
+            // Draw pointer
+            ctx.beginPath();
+            ctx.moveTo(200,20);
+            ctx.lineTo(190,40);
+            ctx.lineTo(210,40);
+            ctx.closePath();
+            ctx.fillStyle = "#ff5252";
+            ctx.fill();
+        }
+        drawWheel();
+
+        function spinWheel() {
+            if (spinning) return;
+            spinning = true;
+            document.getElementById('wheel-result').textContent = "";
+            let spins = Math.floor(Math.random()*5)+5;
+            let finalAngle = Math.random()*2*Math.PI;
+            let totalAngle = spins*2*Math.PI + finalAngle;
+            let duration = 2500;
+            let start = null;
+            function animate(ts) {
+                if (!start) start = ts;
+                let progress = ts - start;
+                let ease = 1 - Math.pow(1-progress/duration,3);
+                angle = ease * totalAngle;
+                drawWheel();
+                if (progress < duration) {
+                    requestAnimationFrame(animate);
+                } else {
+                    spinning = false;
+                    let selectedIndex = Math.floor(((2*Math.PI - (angle % (2*Math.PI))) / arc) % slices);
+                    selected = options[selectedIndex];
+                    document.getElementById('wheel-result').textContent = "Selected: " + selected;
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+    </script>
+
+    <body>
+        <main>
+            <h1>fun time wheels</h1>
+            <p>randomized wheels to spin from to help decide what to do for the day, what to cook, etc</p>
+            <h2>food to make</h2>
+            <canvas id="wheel" width="400" height="400"></canvas>
+            <br>
+            <button onclick="spinWheel()">spin da wheel</button>
+            <p id="wheel-result" style="font-weight:bold;"></p>
+        </main>
+    </body>
+</html>
