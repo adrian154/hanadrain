@@ -4,17 +4,26 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>hanadrain</title>
-        <link rel="stylesheet" href="stylesheets/common.css">
+        <link rel="stylesheet" href="stylesheets/common.css">"
         <link rel="stylesheet" href="stylesheets/homepage.css">
     </head>
 
+        <script>
+        const foods = ["amatriciana","apple pie","baklava","beef stew","birria","biryani","bread","bun bo hue","butter chicken","chow mein","creme brulee","curry","dubai chocolate","dumplings","egg tart","enchilladas","focaccia","french onion soup","fried rice","garlic butter pasta","ginger scallion soup","green pepper pork","hot pot base","instant noodles","jambalaya","kimchi","lasagna","lumpia","melon pan","noodle soup","oat milk","pho","pizza","ravioli","salsa verde","scalloped potatoes","spaghetti","soondubu","soup","vegetable soup"];
+
+        function foodgen() {
+            const choice = foods[Math.floor(Math.random() * foods.length)];
+            document.getElementById('foodResult').textContent = "Selected: " + choice;
+        }
+        </script>
     
     <body>
         <main>
-            <h1>fun time wheels</h1>
-            <p>randomized wheels to spin from to help decide what to do for the day, what to cook, etc</p>
-            <h2>food to make</h2>
-            <iframe src="https://pickerwheel.com/emb/?choices=amatriciana,apple%20pie,baklava,beef%20stew,birria,biryani,bread,bun%20bo%20hue,butter%20chicken,chow%20mein,creme%20brulee,curry,dubai%20chocolate,dumplings,egg%20tart,enchilladas,focaccia,french%20onion%20soup,fried%20rice,garlic%20butter%20pasta,ginger%20scallion%20soup,green%20pepper%20pork,hot%20pot%20base,instant%20noodles,jambalaya,kimchi,lasagna,lumpia,melon%20pan,noodle%20soup,oat%20milk,pho,pizza,ravioli,salsa%20verde,scalloped%20potatoes,spaghetti,soondubu,soup,vegetable%20soup&confetti=true&color=white" width="100%" height="400px" scrolling="no" frameborder="0"></iframe>
+            <transgender style="font-size: 30px;">fun time wheel</transgender>
+            
+            <h2>food generator</h2>
+            <button onclick="foodgen()">generate a food item...</button>
+            <p id="foodResult"></p>
         </main>
     </body>
 </html>
