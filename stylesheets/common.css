@@ -11,6 +11,33 @@ body {
     color: #2F2F2F;
 }
 
+@keyframes transgender {
+0% {color: lightskyblue;}
+12.5% {color: pink;}
+25% {color: white;}
+37.5% {color: pink;}
+50% {color: lightskyblue;}
+62.5% {color: pink;}
+75% {color: white;}
+87.5% {color: pink;}
+100% {color: lightskyblue;}
+}
+
+transgender {
+animation-name: transgender;
+animation-duration: 5s;
+animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+0% {opacity: 0;}
+50% {opacity: 0;}
+50.01% {opacity: 1;}
+99.99% {opacity: 1;}
+100% {opacity: 0;}
+}
+
+
 body::-webkit-scrollbar {
     width: 18px;
     background: var(--cyan);
